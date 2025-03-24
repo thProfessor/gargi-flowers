@@ -14,7 +14,6 @@ import gargi from './assets/gargi.jpg'
 function App() {
   const [asked, setAsked] = useState(false);
   const [response, setResponse] = useState(null);
-  const [isYes,setIsYes] = useState(null);
   const audioRef = useRef(null);
 
   const askOut = (answer) => {
@@ -86,25 +85,14 @@ function App() {
               </motion.button>
             </div>
           </>
-        ) : isYes ? (
+        ) : (
           <motion.p
             style={{ fontSize: "24px", fontWeight: "bold", marginTop: "20px" }}
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <Lottie animationData={flowers} style={{ width: "150px", margin: "auto" }} />
-            {response}
-          </motion.p>
-        ) :
-        (
-          <motion.p
-            style={{ fontSize: "24px", fontWeight: "bold", marginTop: "20px" }}
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Lottie animationData={couple} style={{ width: "150px", margin: "auto" }} />
+            <Lottie animationData={response === "Yes!" ? flowers : couple} style={{ width: "150px", margin: "auto" }} />
             {response}
           </motion.p>
         )
